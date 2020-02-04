@@ -11,25 +11,14 @@ import javax.persistence.Id;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Student {
-	@Id
-	@GeneratedValue
-	private int id;
-	
-	private String studentId;
-	
-	private String firstName;
-	
-	private String lastName;
-	
-	private String barCode;
+public class Administrator {
+    @Id
+    @GeneratedValue
+    private long id;
 
-	private String password;
-
-
-
-
+    private String username;
+    private String password;
 }

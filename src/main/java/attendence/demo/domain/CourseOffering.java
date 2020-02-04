@@ -1,9 +1,17 @@
 package attendence.demo.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class CourseOffering {
     @Id
@@ -22,53 +30,10 @@ public class CourseOffering {
     @JoinColumn(name = "locationId")
     private Location location;
 
-    public CourseOffering() {}
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Faculty faculty;
 
-    public CourseOffering(Course course, LocalDate startDate, LocalDate endDate) {
-        this.course = course;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
 
-    public int getCourseOfferingId() {
-        return courseOfferingId;
-    }
-
-    public void setCourseOfferingId(int courseOfferingId) {
-        this.courseOfferingId = courseOfferingId;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
-	}
     
     
 }
