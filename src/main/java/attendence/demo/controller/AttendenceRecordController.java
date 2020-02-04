@@ -25,6 +25,6 @@ public class AttendenceRecordController {
 
 	@GetMapping(value ="faculty/courseoffering")
 	public List<CourseOffering> getCourseOffering() {
-		return courseOfferingService.getCourseOffering();
+		return courseOfferingService.findAll();
 	}
 }

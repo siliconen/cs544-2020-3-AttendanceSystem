@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CourseOfferingService {
 
-	List<CourseOffering> getCourseOffering();
+	List<CourseOffering> findAll();
 }
