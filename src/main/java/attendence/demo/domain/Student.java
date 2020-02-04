@@ -1,14 +1,16 @@
 package attendence.demo.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Student {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	private String studentId;
 	
@@ -17,6 +19,10 @@ public class Student {
 	private String lastName;
 	
 	private String barCode;
+
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JsonManagedReference
+	private List<AttendanceRecord> attendanceRecords;
 
 	public Student() {
 	}
@@ -28,12 +34,13 @@ public class Student {
 		this.barCode = barCode;
 	}
 
-	public int getId() {
-		return id;
+	public List<AttendanceRecord> getAttendanceRecords() {
+		return attendanceRecords;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getStudentId() {

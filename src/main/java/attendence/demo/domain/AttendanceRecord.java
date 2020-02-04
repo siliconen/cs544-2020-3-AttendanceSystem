@@ -1,5 +1,8 @@
 package attendence.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -7,11 +10,12 @@ import java.time.LocalDate;
 @Entity
 public class AttendanceRecord {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
     @JoinColumn(name = "studentId")
+    @JsonBackReference
     private Student student;
 
     @ManyToOne
