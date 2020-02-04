@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CourseOfferingController {
@@ -22,7 +23,7 @@ public class CourseOfferingController {
     }
 
     @GetMapping("/admin/courseOfferings/{id}")
-    public CourseOffering getCourseOffering(@PathVariable Integer id){
+    public Optional getCourseOffering(@PathVariable Integer id){
         return courseOfferingService.findById(id);
     }
 

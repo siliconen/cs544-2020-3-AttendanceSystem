@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,8 +24,9 @@ public class CourseOfferingServiceImpl implements CourseOfferingService {
 	}
 
 	@Override
-	public CourseOffering findById(int id) {
-		return courseOfferingRepository.getOne(id);
+	public Optional findById(int id) {
+
+		return courseOfferingRepository.findById(id);
 	}
 
 	@Override
