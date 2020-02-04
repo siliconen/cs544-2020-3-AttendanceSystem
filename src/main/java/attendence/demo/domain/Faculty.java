@@ -1,17 +1,10 @@
 package attendence.demo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 public class Faculty {
     @Id
@@ -24,6 +17,8 @@ public class Faculty {
 
     private String password;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
     private List<CourseOffering> courseOfferings ;
+
 }
