@@ -18,12 +18,12 @@ public class FacultyController {
 	@Autowired
 	private CourseOfferingService courseOfferingService;
 
-	@GetMapping(value ="course")
+	@GetMapping(value ="faculty/course")
 	public List<Course> getCourses() {
-		return courseService.getCourse();
+		return courseService.findAll();
 	}
 
-	@GetMapping(value ="courseoffering")
+	@GetMapping(value ="faculty/courseoffering")
 	public List<CourseOffering> getCourseOffering() {
 		return courseOfferingService.getCourseOffering();
 	}
