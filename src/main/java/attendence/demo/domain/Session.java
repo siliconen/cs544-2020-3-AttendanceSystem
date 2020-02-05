@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Entity
 public class Session {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne

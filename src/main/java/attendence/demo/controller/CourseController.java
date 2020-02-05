@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 public class CourseController {
 
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("admin/read_courses")
+    @GetMapping("admin/courses")
     public List<Course> getAllCourses() {
         return courseService.findAll();
     }
@@ -23,16 +24,20 @@ public class CourseController {
         return courseService.findById(id);
     }
     @PostMapping("/admin/courses")
-    public Course saveCourse(Course course){
+    public Course saveCourse(@RequestBody Course course){
         return courseService.save(course);
     }
     @PutMapping("/admin/courses")
-    public Course updateCourse(Course course){
+    public Course updateCourse(@RequestBody Course course){
         return courseService.save(course);
     }
     @DeleteMapping(value ="/admin/courses/{id}")
     public void deleteCourse(@PathVariable Integer id){
          courseService.delete(id);
+    }
+    @GetMapping(value ="faculty/courses")
+    public List<Course> getCourses() {
+        return courseService.findAll();
     }
 
 }

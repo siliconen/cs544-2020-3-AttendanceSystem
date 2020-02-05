@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Entity
 public class CourseOffering {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int courseOfferingId;
 
     @ManyToOne

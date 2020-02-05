@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Entity
 public class AttendanceRecord {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne

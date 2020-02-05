@@ -1,6 +1,7 @@
 package attendence.demo.service.course;
 
 import java.util.List;
+import java.util.Optional;
 
 import attendence.demo.domain.Course;
 import attendence.demo.repository.CourseRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CourseServiceImpl implements CourseService {
+
 
 	@Autowired
 	private CourseRepository courseRepository;
@@ -20,7 +22,8 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public Course findById(int id) {
-		return courseRepository.getOne(id);
+		Optional<Course> c=courseRepository.findById(id);
+		return c.get();
 	}
 
 	@Override

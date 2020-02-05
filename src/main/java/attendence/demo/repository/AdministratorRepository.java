@@ -1,4 +1,9 @@
 package attendence.demo.repository;
 
-public interface AdministratorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import attendence.demo.domain.Administrator;
+
+
+public interface AdministratorRepository extends JpaRepository<Administrator, Integer>{
 }

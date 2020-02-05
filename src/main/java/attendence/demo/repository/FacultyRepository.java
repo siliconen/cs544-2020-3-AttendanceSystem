@@ -1,4 +1,8 @@
 package attendence.demo.repository;
 
-public interface FacultyRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import attendence.demo.domain.Faculty;
+
+public interface FacultyRepository extends JpaRepository<Faculty, Integer> {
 }

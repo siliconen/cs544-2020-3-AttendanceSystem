@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 public class Registry {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private double GPA;
