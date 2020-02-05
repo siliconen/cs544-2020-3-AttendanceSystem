@@ -19,5 +19,7 @@ public interface CourseOfferingService {
 
 
 	public CourseOffering addCourseOffering(CourseOffering courseOffering);
+	
+	public double countAttendacePercentInCourseOffering(int courseOfferingId) ;
 
 }

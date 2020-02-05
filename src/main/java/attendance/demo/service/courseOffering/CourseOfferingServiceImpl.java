@@ -1,6 +1,10 @@
 package attendance.demo.service.courseOffering;
 import attendance.demo.domain.CourseOffering;
+import attendance.demo.repository.AttendanceRepository;
 import attendance.demo.repository.CourseOfferingRepository;
+import attendance.demo.repository.RegistryRepository;
+import attendance.demo.repository.SessionRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
