@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Setter
 @Getter
@@ -16,15 +17,23 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Entity
 public class Course {
+<<<<<<< HEAD
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
     private String courseId;
+=======
+	@Id
+	@GeneratedValue
+	private int id;
+>>>>>>> 770ad13497deff0422f66199f050fe3c10a0620b
 
-    private String name;
+	@NotBlank
+	private String courseId;
+	@NotBlank
+	private String name;
 
-    private String description;
-
+	private String description;
 
 }
