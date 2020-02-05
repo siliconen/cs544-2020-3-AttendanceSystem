@@ -1,5 +1,6 @@
 package attendance.demo.repository;
 
+import attendance.demo.domain.Timeslot;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

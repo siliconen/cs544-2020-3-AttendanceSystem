@@ -1,7 +1,8 @@
 package attendance.demo.controller;
 
 import java.util.List;
-
+import attendance.demo.domain.Student;
+import attendance.demo.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -16,9 +16,9 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class Faculty {
-	@Id
-	@GeneratedValue
-	private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
 	@NotBlank
 	private String firstName;
@@ -29,6 +29,4 @@ public class Faculty {
 	@NotBlank
 	private String password;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
-	private List<CourseOffering> courseOfferings;
 }

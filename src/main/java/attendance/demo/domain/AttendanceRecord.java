@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class AttendanceRecord {
+
 	@Id
 	@GeneratedValue
 	private int id;

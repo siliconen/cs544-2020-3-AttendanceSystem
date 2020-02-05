@@ -8,11 +8,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import attendance.demo.domain.AttendanceRecord;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Repository
-@org.springframework.transaction.annotation.Transactional
+@Transactional
 public interface AttendanceRepository extends JpaRepository<AttendanceRecord, Integer> {
 
 	@Query("select a from Session s, AttendanceRecord a "

@@ -1,15 +1,6 @@
 package attendance.demo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-
-import attendance.demo.domain.*;
-import attendance.demo.repository.CourseOfferingRepository;
-import attendance.demo.repository.CourseRepository;
-
-import java.time.LocalDate;
 
 @Component
 public class DataLoader  {
