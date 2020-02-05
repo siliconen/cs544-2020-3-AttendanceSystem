@@ -29,6 +29,15 @@ public interface AttendanceRepository extends JpaRepository<AttendanceRecord, In
 			+ "and a.student.studentId=:studentId "			
 			+ "and s.courseOffering.courseOfferingId=:courseOfferingId "
 			+ "order by a.date, s.timeslot.id")
-	List<AttendanceRecord> getStudentRecordsInCourseOffering(@Param("studentId") String studentId, @Param("courseOfferingId") int courseOfferingId);	
+	List<AttendanceRecord> getStudentRecordsInCourseOffering(@Param("studentId") String studentId, @Param("courseOfferingId") int courseOfferingId);
+	
+	@Query("select count(*) from AttendanceRecord a, Session s, CourseOffering c "
+			+ "where s.date = a.date "
+			+ "and s.timeslot.id = a.timeslot.id "
+			+ "and c.courseOfferingId = s.courseOffering.courseOfferingId "
+			+ "and c.location.id = a.location.id "			
+			+ "and s.courseOffering.courseOfferingId=:courseOfferingId "
+			+ "order by a.date, s.timeslot.id")
+	int countRecordsInCourseOffering(@Param("courseOfferingId") int courseOfferingId);
 	
 }

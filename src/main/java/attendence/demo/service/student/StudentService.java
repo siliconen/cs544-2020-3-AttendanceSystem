@@ -8,4 +8,6 @@ public interface StudentService {
 	List<Student> getStudentListBySession(int sessionId);
 	
 	List<Student> getStudentListByCourseOffering(int courseOfferingId);
+	
+	List<Student> getStudentListByCourse(String courseId);
 }

@@ -25,4 +25,10 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getStudentListByCourseOffering(int courseOfferingId) {
 		return studentRepository.getStudentListByCourseOffering(courseOfferingId);
 	}
+
+	@Override
+	public List<Student> getStudentListByCourse(String courseId) {
+		// TODO Auto-generated method stub
+		return studentRepository.getStudentListByCourse(courseId);
+	}
 }

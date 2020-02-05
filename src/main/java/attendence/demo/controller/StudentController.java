@@ -25,4 +25,9 @@ public class StudentController {
 	public List<Student> getStudentListByCourseOffering(@PathVariable("courseofferingid") int courseOfferingId) {
 		return studentService.getStudentListByCourseOffering(courseOfferingId);
 	}
+	
+	@GetMapping(value = "/faculty/students/course/{courseid}")
+	public List<Student> getStudentListByCourse(@PathVariable("courseid") String courseId) {
+		return studentService.getStudentListByCourse(courseId);
+	}
 }
