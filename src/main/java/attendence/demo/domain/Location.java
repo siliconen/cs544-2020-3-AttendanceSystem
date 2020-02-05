@@ -8,6 +8,8 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Setter
@@ -20,8 +22,10 @@ public class Location {
     @GeneratedValue
     private int id;
     
+    @NotNull
     private String locationId;
     
+    @NotBlank
     private String name;
 
 

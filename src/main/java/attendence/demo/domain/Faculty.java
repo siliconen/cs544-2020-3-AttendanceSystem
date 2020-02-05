@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import java.util.List;
 
 @Setter
@@ -14,16 +16,19 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class Faculty {
-    @Id
-    @GeneratedValue
-    private long id;
+	@Id
+	@GeneratedValue
+	private long id;
+	
+	@NotBlank
+	private String firstName;
 
-    private String firstName;
+	@NotBlank
+	private String lastName;
 
-    private String lastName;
+	@NotBlank
+	private String password;
 
-    private String password;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
-    private List<CourseOffering> courseOfferings ;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
+	private List<CourseOffering> courseOfferings;
 }

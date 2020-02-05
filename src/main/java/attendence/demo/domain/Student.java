@@ -18,18 +18,14 @@ public class Student {
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	private String studentId;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private String barCode;
 
 	private String password;
-
-
-
-
 }

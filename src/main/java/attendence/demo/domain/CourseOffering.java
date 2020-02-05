@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 @Setter
@@ -14,26 +17,27 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class CourseOffering {
-    @Id
-    @GeneratedValue
-    private int courseOfferingId;
+	@Id
+	@GeneratedValue
+	private int courseOfferingId;
 
-    @ManyToOne
-    @JoinColumn(name = "courseId")
-    private Course course;
+	@ManyToOne
+	@JoinColumn(name = "courseId")
+	@Valid
+	private Course course;
 
-    private LocalDate startDate;
+	@NotNull
+	private LocalDate startDate;
+	@NotNull
+	private LocalDate endDate;
 
-    private LocalDate endDate;
-    
-    @ManyToOne
-    @JoinColumn(name = "locationId")
-    private Location location;
+	@ManyToOne
+	@JoinColumn(name = "locationId")
+	@Valid
+	private Location location;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Faculty faculty;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@Valid
+	private Faculty faculty;
 
-
-    
-    
 }
