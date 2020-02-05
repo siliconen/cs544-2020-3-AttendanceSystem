@@ -20,13 +20,7 @@ public class AttendenceServiceImpl implements AttendenceService {
 	private AttendanceRepository attendanceRepository;
 
 	@Override
-	public List<AttendanceRecord> getStudentRecords(String studentId) {
-		List<AttendanceRecord> list = attendanceRepository.getStudentRecords(studentId);
-		return list;
-	}
-
-	@Override
-	public List<AttendanceRecord> getSessiontRecords(int sessionId) {
+	public List<AttendanceRecord> getSessionRecords(int sessionId) {
 		return attendanceRepository.getSessionRecords(sessionId);
 	}
 

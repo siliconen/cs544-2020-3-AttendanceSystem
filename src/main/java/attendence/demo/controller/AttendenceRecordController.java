@@ -34,12 +34,6 @@ public class AttendenceRecordController {
 		return courseOfferingService.getCourseOffering();
 	}
 
-	@GetMapping(value = "/faculty/attendance/student/{studentid}")
-	public List<AttendanceRecord> getStudentRecords(@PathVariable("studentid") String studentId) {
-		List<AttendanceRecord> result = attendanceService.getStudentRecords(studentId);
-		return result;
-	}
-
 	@GetMapping(value = "/faculty/attendance/student/{studentid}/courseoffering/{offeringid}")
 	public List<AttendanceRecord> getStudentRecordsInCourseOffering(@PathVariable("studentid") String studentId,
 			@PathVariable("offeringid") int courseOfferingId) {
@@ -50,7 +44,7 @@ public class AttendenceRecordController {
 
 	@GetMapping(value = "/faculty/attendance/session/{sessionid}")
 	public List<AttendanceRecord> getSessionRecords(@PathVariable("sessionid") int sessionId) {
-		List<AttendanceRecord> result = attendanceService.getSessiontRecords(sessionId);
+		List<AttendanceRecord> result = attendanceService.getSessionRecords(sessionId);
 		return result;
 	}
 }
