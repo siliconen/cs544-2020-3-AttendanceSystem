@@ -37,7 +37,7 @@ public interface AttendanceRepository extends JpaRepository<AttendanceRecord, In
 			+ "and c.courseOfferingId = s.courseOffering.courseOfferingId "
 			+ "and c.location.id = a.location.id "			
 			+ "and s.courseOffering.courseOfferingId=:courseOfferingId "
-			+ "order by a.date, s.timeslot.id")
+			+ "and s.date between c.startDate and c.endDate")
 	int countRecordsInCourseOffering(@Param("courseOfferingId") int courseOfferingId);
 	
 }

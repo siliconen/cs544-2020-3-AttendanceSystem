@@ -19,7 +19,7 @@ public class Faculty {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@NotBlank
 	private String firstName;
 
