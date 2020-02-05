@@ -1,6 +1,9 @@
 package attendance.demo.service.courseOffering;
 import attendance.demo.domain.CourseOffering;
+import attendance.demo.repository.AttendanceRepository;
 import attendance.demo.repository.CourseOfferingRepository;
+import attendance.demo.repository.RegistryRepository;
+import attendance.demo.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,7 +51,7 @@ public class CourseOfferingServiceImpl implements CourseOfferingService {
 	}
 
 	@Override
-	public double countAttendacePercentInCourseOffering(int courseOfferingId) {
+	public double countAttendancePercentInCourseOffering(int courseOfferingId) {
 		int sessionCount = sessionRepository.countByCourseOffering(courseOfferingId);
 		int registrationCount = registryRepository.countByCourseOffering(courseOfferingId);
 		int attendanceCount = attendanceRepository.countRecordsInCourseOffering(courseOfferingId);

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import attendance.demo.service.courseOffering.CourseOfferingService;
 
+import java.util.List;
+
 @RestController
 public class CourseOfferingController {
 	@Autowired
@@ -55,6 +57,6 @@ public class CourseOfferingController {
 	}
 	@GetMapping(value = "/faculty/attendancepercent/courseoffering/{courseofferingid}")
 	public double calculateCourseOfferingPecent(@PathVariable("courseofferingid") int courseOfferingId) {
-		return courseOfferingService.countAttendacePercentInCourseOffering(courseOfferingId);
+		return courseOfferingService.countAttendancePercentInCourseOffering(courseOfferingId);
 	}
 }
