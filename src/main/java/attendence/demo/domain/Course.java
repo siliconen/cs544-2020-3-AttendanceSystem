@@ -1,4 +1,4 @@
-package attendance.demo.domain;
+package attendence.demo.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,24 +10,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Location {
+public class Course {
+<<<<<<< HEAD
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @NotNull
-    private String locationId;
-    
-    @NotBlank
-    private String name;
+    private String courseId;
+=======
+	@Id
+	@GeneratedValue
+	private int id;
+>>>>>>> 770ad13497deff0422f66199f050fe3c10a0620b
 
+	@NotBlank
+	private String courseId;
+	@NotBlank
+	private String name;
+
+	private String description;
 
 }
