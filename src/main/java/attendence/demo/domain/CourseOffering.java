@@ -24,6 +24,7 @@ public class CourseOffering {
 	@ManyToOne
 	@JoinColumn(name = "courseId")
 	@Valid
+	@NotNull
 	private Course course;
 
 	@NotNull
@@ -34,6 +35,7 @@ public class CourseOffering {
 	@ManyToOne
 	@JoinColumn(name = "locationId")
 	@Valid
+	@NotNull
 	private Location location;
 
 	@ManyToOne(cascade = CascadeType.ALL)

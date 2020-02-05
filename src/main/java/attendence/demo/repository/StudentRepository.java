@@ -9,5 +9,5 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional()
-public interface StudentRepository extends JpaRepository<Student, Integer> {
+public interface StudentRepository extends JpaRepository<Student, Integer> {	
 }

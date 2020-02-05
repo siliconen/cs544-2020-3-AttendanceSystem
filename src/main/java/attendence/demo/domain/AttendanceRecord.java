@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 @Setter
@@ -14,23 +17,29 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class AttendanceRecord {
-    @Id
-    @GeneratedValue
-    private int id;
+	@Id
+	@GeneratedValue
+	private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "studentId")
-    private Student student;
+	@ManyToOne
+	@JoinColumn(name = "studentId")
+	@Valid
+	@NotNull
+	private Student student;
 
-    @ManyToOne
-    @JoinColumn(name = "timeslotId")
-    private Timeslot timeslot;
+	@ManyToOne
+	@JoinColumn(name = "timeslotId")
+	@Valid
+	@NotNull
+	private Timeslot timeslot;
 
-    @ManyToOne
-    @JoinColumn(name = "locationId")
-    private Location location;
+	@ManyToOne
+	@JoinColumn(name = "locationId")
+	@Valid
+	@NotNull
+	private Location location;
 
-    private LocalDate date;
-
+	@NotNull
+	private LocalDate date;
 
 }

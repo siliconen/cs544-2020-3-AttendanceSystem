@@ -25,5 +25,6 @@ public interface AttendanceRepository extends JpaRepository<AttendanceRecord, In
 			+ "where s.timeslot.id = a.timeslot.id "
 			+ "and a.student.studentId=:studentId "
 			+ "and s.courseOffering.courseOfferingId=:courseOfferingId")
-	List<AttendanceRecord> getStudentRecordsInCourseOffering(@Param("studentId") String studentId, @Param("courseOfferingId") int courseOfferingId);
+	List<AttendanceRecord> getStudentRecordsInCourseOffering(@Param("studentId") String studentId, @Param("courseOfferingId") int courseOfferingId);	
+	
 }
