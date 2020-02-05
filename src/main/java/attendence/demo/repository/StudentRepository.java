@@ -20,4 +20,11 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 			+ "and ss.id = a.student.id "
 			+ "and s.id=:sessionId")
 	List<Student> getStudentListBySession(@Param("sessionId") int sessionId);
+	
+	@Query("select distinct ss from Student ss,  Session s, AttendanceRecord a " 
+			+ "where s.timeslot.id = a.timeslot.id "			
+			+ "and s.date = a.date "
+			+ "and ss.id = a.student.id "
+			+ "and s.courseOffering.courseOfferingId=:courseOfferingId")
+	List<Student> getStudentListByCourseOffering(@Param("courseOfferingId") int courseOfferingId);
 }
