@@ -17,26 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class AttendanceRecord {
-<<<<<<< HEAD
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "studentId")
-    private Student student;
-
-    @ManyToOne
-    @JoinColumn(name = "timeslotId")
-    private Timeslot timeslot;
-
-    @ManyToOne
-    @JoinColumn(name = "locationId")
-    private Location location;
-
-    private LocalDate date;
-
-=======
 	@Id
 	@GeneratedValue
 	private int id;
@@ -61,6 +42,5 @@ public class AttendanceRecord {
 
 	@NotNull
 	private LocalDate date;
->>>>>>> 770ad13497deff0422f66199f050fe3c10a0620b
 
 }

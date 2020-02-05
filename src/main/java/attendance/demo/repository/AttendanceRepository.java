@@ -1,23 +1,15 @@
-<<<<<<< HEAD:src/main/java/attendence/demo/repository/AttendanceRepository.java
-package attendence.demo.repository;
-
-=======
 package attendance.demo.repository;
->>>>>>> 1eda4df70839c95503568c435d03eb1e046f6342:src/main/java/attendance/demo/repository/AttendanceRepository.java
-
-import javax.transaction.Transactional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-<<<<<<< HEAD:src/main/java/attendence/demo/repository/AttendanceRepository.java
-
-=======
->>>>>>> 1eda4df70839c95503568c435d03eb1e046f6342:src/main/java/attendance/demo/repository/AttendanceRepository.java
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import attendance.demo.domain.AttendanceRecord;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Repository
-@org.springframework.transaction.annotation.Transactional
+@Transactional
 public interface AttendanceRepository extends JpaRepository<AttendanceRecord, Integer> {
 
 	@Query("select a from Session s, AttendanceRecord a "

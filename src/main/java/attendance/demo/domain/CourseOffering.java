@@ -17,27 +17,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class CourseOffering {
-<<<<<<< HEAD
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int courseOfferingId;
-
-    @ManyToOne
-    @JoinColumn(name = "courseId")
-    private Course course;
-
-    private LocalDate startDate;
-
-    private LocalDate endDate;
-    
-    @ManyToOne
-    @JoinColumn(name = "locationId")
-    private Location location;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Faculty faculty;
-
-=======
 	@Id
 	@GeneratedValue
 	private int courseOfferingId;
@@ -62,6 +41,5 @@ public class CourseOffering {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@Valid
 	private Faculty faculty;
->>>>>>> 770ad13497deff0422f66199f050fe3c10a0620b
 
 }

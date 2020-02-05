@@ -2,6 +2,8 @@ package attendance.demo.controller;
 
 import java.util.List;
 
+import attendance.demo.domain.Location;
+import attendance.demo.service.location.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
@@ -10,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import attendence.demo.domain.Location;
-
-import attendence.demo.service.location.LocationService;
 
 public class LocationController {
 	@Autowired

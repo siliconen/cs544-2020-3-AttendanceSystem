@@ -17,23 +17,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class Session {
-<<<<<<< HEAD
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @ManyToOne
-    @JoinColumn(name = "courseOfferingId")
-    private CourseOffering courseOffering;
-
-    @ManyToOne
-    @JoinColumn(name = "timeSlotId")
-    private Timeslot timeslot;
-
-    private LocalDate date;
-
-
-=======
 	@Id
 	@GeneratedValue
 	private int id;
@@ -52,6 +35,5 @@ public class Session {
 
 	@NotNull
 	private LocalDate date;
->>>>>>> 770ad13497deff0422f66199f050fe3c10a0620b
 
 }

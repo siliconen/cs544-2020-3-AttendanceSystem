@@ -1,10 +1,5 @@
 package attendance.demo.repository;
-
-<<<<<<< HEAD:src/main/java/attendence/demo/repository/StudentRepository.java
-import attendence.demo.domain.Student;
-=======
 import attendance.demo.domain.Student;
->>>>>>> 1eda4df70839c95503568c435d03eb1e046f6342:src/main/java/attendance/demo/repository/StudentRepository.java
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

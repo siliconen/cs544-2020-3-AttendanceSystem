@@ -15,15 +15,11 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Entity
 public class Registry {
-<<<<<<< HEAD
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-=======
-	@Id
-	@GeneratedValue
-	private long id;
->>>>>>> 770ad13497deff0422f66199f050fe3c10a0620b
+
 
 	private double GPA;
 
