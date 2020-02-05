@@ -1,4 +1,9 @@
 package attendance.demo.repository;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,6 +31,15 @@ public interface AttendanceRepository extends JpaRepository<AttendanceRecord, In
 			+ "and a.student.studentId=:studentId "			
 			+ "and s.courseOffering.courseOfferingId=:courseOfferingId "
 			+ "order by a.date, s.timeslot.id")
-	List<AttendanceRecord> getStudentRecordsInCourseOffering(@Param("studentId") String studentId, @Param("courseOfferingId") int courseOfferingId);	
+	List<AttendanceRecord> getStudentRecordsInCourseOffering(@Param("studentId") String studentId, @Param("courseOfferingId") int courseOfferingId);
+	
+	@Query("select count(*) from AttendanceRecord a, Session s, CourseOffering c "
+			+ "where s.date = a.date "
+			+ "and s.timeslot.id = a.timeslot.id "
+			+ "and c.courseOfferingId = s.courseOffering.courseOfferingId "
+			+ "and c.location.id = a.location.id "			
+			+ "and s.courseOffering.courseOfferingId=:courseOfferingId "
+			+ "and s.date between c.startDate and c.endDate")
+	int countRecordsInCourseOffering(@Param("courseOfferingId") int courseOfferingId);
 	
 }

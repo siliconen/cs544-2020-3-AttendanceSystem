@@ -17,13 +17,13 @@ public class LocationController {
 	@Autowired
 	private LocationService locationService;
 
-	
+
 	@RequestMapping(value="/locations", method=RequestMethod.GET)
 	public List<Location> getAllLocations() {
 		System.out.println("----getAllLocations()------");
 		return locationService.getAllLocations();
-		 
-	} 
+
+	}
 
 	@RequestMapping(value="/locations", method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
@@ -36,23 +36,23 @@ public class LocationController {
 	public Location getLocation(@PathVariable int id, Model model) {
 		System.out.println("----getLocation()------");
 		return locationService.getLocationById(id);
-		
+
 	}
-	
+
 	@RequestMapping(value="/locations/{id}", method=RequestMethod.POST)
 	public Location updateLocation(@PathVariable int id) {
-		
+
 		System.out.println("----updateLocation()------");
 		Location location=locationService.getLocationById(id);
-		
-		return locationService.updateLocation(location); 
-	
+
+		return locationService.updateLocation(location);
+
 	}
 
 	@RequestMapping(value="/deleteLocations/{id}", method=RequestMethod.POST)
 	public boolean deleteLocation(@PathVariable int id) {
 		System.out.println("----deleteLocation()------");
 		return  locationService.deleteLocationById(id);
-		
+
 	}
 }

@@ -20,7 +20,6 @@ public class Faculty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-	
 	@NotBlank
 	private String firstName;
 

@@ -8,17 +8,16 @@ import attendance.demo.domain.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import attendance.demo.domain.Course;
+import attendance.demo.repository.CourseRepository;
 
 @Service
 @Transactional
 public class CourseServiceImpl implements CourseService {
 
-
 	@Autowired
 	private CourseRepository courseRepository;
-
-
+	
 	@Override
 	public List<Course> findAll() {
 		return courseRepository.findAll();
@@ -38,4 +37,5 @@ public class CourseServiceImpl implements CourseService {
 	public void delete(int id) {
 		courseRepository.deleteById(id);
 	}
+
 }

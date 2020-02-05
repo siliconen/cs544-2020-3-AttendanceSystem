@@ -13,20 +13,26 @@ public class CourseOfferingServiceImpl implements CourseOfferingService {
 
 	@Autowired
 	private CourseOfferingRepository courseOfferingRepository;
-	
+
+	@Autowired
+	private SessionRepository sessionRepository;
+
+	@Autowired
+	private RegistryRepository registryRepository;
+
+	@Autowired
+	private AttendanceRepository attendanceRepository;
+
+		public CourseOffering addCourseOffering(CourseOffering courseOffering) {
+			courseOfferingRepository.save(courseOffering);
+			return courseOffering;
+		}
 
 
-	public CourseOffering addCourseOffering(CourseOffering courseOffering) {
-		courseOfferingRepository.save(courseOffering);
-		return courseOffering;
-	}
-
-
-	public CourseOffering updateCourseOffering(CourseOffering courseOffering) {
-		courseOfferingRepository.save(courseOffering);
-		return courseOffering;
-	}
-
+		public CourseOffering updateCourseOffering(CourseOffering courseOffering) {
+			courseOfferingRepository.save(courseOffering);
+			return courseOffering;
+		}
 	public boolean deleteCourseOfferingById(int id) {
 		courseOfferingRepository.deleteById(id);
 		return true;
@@ -39,6 +45,15 @@ public class CourseOfferingServiceImpl implements CourseOfferingService {
 
 	public List<CourseOffering> getAllCourseOfferings() {
 		return courseOfferingRepository.findAll();
+	}
+
+	@Override
+	public double countAttendacePercentInCourseOffering(int courseOfferingId) {
+		int sessionCount = sessionRepository.countByCourseOffering(courseOfferingId);
+		int registrationCount = registryRepository.countByCourseOffering(courseOfferingId);
+		int attendanceCount = attendanceRepository.countRecordsInCourseOffering(courseOfferingId);
+
+		return ((attendanceCount * 1.0) / (sessionCount * registrationCount)) * 100;
 	}
 
 }
