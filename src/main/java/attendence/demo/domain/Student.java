@@ -1,14 +1,13 @@
 package attendence.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
+import javax.persistence.*;
+import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
@@ -17,19 +16,22 @@ import javax.persistence.Id;
 public class Student {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	private String studentId;
 	
 	private String firstName;
 	
 	private String lastName;
+
+	private String username;
+
+	private String password;
 	
 	private String barCode;
 
-	private String password;
-
-
-
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JsonManagedReference
+	private List<AttendanceRecord> attendanceRecords;
 
 }
