@@ -1,12 +1,11 @@
-package attendence.demo.repository;
-
+package attendance.demo.repository;
 
 import javax.transaction.Transactional;
 
+import attendance.demo.domain.AttendanceRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import attendence.demo.domain.AttendanceRecord;
 
 @Repository
 @Transactional()

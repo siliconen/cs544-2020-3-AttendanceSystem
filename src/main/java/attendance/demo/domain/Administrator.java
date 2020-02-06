@@ -14,11 +14,22 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Administrator {
-    @Id
-    @GeneratedValue
-    private int id;
+public class Administrator extends AbstractUser {
 
-    private String username;
-    private String password;
+    private String full_names;
+
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
+    @Override
+    public int getId() {
+        return super.getId();
+    }
 }
