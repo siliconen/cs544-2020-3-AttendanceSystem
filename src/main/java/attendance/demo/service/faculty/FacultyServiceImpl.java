@@ -1,8 +1,10 @@
 package attendance.demo.service.faculty;
 
 import attendance.demo.domain.Faculty;
+import attendance.demo.domain.Student;
 import attendance.demo.repository.FacultyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,6 +18,9 @@ public class FacultyServiceImpl implements FacultyService {
     @Autowired
     private FacultyRepository facultyRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<Faculty> findAll() {
         return facultyRepository.findAll();
@@ -28,6 +33,10 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public Faculty save(Faculty faculty) {
+
+        String hashedPassword = passwordEncoder.encode(faculty.getPassword());
+        Faculty faculty1= faculty;
+        faculty1.setPassword(hashedPassword);
         return facultyRepository.save(faculty);
     }
 

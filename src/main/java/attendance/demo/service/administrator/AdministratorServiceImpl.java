@@ -1,8 +1,10 @@
 package attendance.demo.service.administrator;
 
 import attendance.demo.domain.Administrator;
+import attendance.demo.domain.Faculty;
 import attendance.demo.repository.AdministratorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,6 +18,9 @@ public class AdministratorServiceImpl implements AdministratorService{
     @Autowired
     private AdministratorRepository administratorRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<Administrator> findAll() {
         return administratorRepository.findAll();
@@ -28,6 +33,9 @@ public class AdministratorServiceImpl implements AdministratorService{
 
     @Override
     public Administrator save(Administrator administrator) {
+        String hashedPassword = passwordEncoder.encode(administrator.getPassword());
+        Administrator administrator1= administrator;
+        administrator1.setPassword(hashedPassword);
         return administratorRepository.save(administrator);
     }
 

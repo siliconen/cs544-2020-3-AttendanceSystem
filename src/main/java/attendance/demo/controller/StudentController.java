@@ -4,12 +4,12 @@ import java.util.List;
 import attendance.demo.domain.Student;
 import attendance.demo.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "students")
 public class StudentController {
 
 	@Autowired
@@ -32,7 +32,7 @@ public class StudentController {
 	}
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping(value = "admin/students")
+    @PostMapping(value = "admin/students",consumes = MediaType.APPLICATION_JSON_VALUE)
     public Student addStudent(@RequestBody Student student){
         return studentService.addStudent(student);
     }
