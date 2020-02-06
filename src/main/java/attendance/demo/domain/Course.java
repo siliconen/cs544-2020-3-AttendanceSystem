@@ -7,7 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Setter
@@ -17,11 +19,13 @@ import java.util.Objects;
 @Entity
 public class Course {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+
+    @NotBlank
     private String courseId;
 
+    @NotBlank
     private String name;
 
     private String description;

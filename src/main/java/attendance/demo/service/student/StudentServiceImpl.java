@@ -21,7 +21,22 @@ public class StudentServiceImpl implements StudentService {
         Student student1 = student;
         student1.setPassword(hashedPassword);
         return studentRepository.save(student1);
-    }
 
 
+
+	@Override
+	public List<Student> getStudentListBySession(int sessionId) {
+		return studentRepository.getStudentListBySession(sessionId);
+	}
+
+	@Override
+	public List<Student> getStudentListByCourseOffering(int courseOfferingId) {
+		return studentRepository.getStudentListByCourseOffering(courseOfferingId);
+	}
+
+	@Override
+	public List<Student> getStudentListByCourse(String courseId) {
+		// TODO Auto-generated method stub
+		return studentRepository.getStudentListByCourse(courseId);
+	}
 }

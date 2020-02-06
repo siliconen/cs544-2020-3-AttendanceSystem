@@ -1,28 +1,39 @@
 package attendance.demo.domain;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 
 @Entity
 public class AttendanceRecord {
-    @Id
-    @GeneratedValue
-    private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "studentId")
-    private Student student;
+	@Id
+	@GeneratedValue
+	private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "timeslotId")
-    private Timeslot timeslot;
+	@ManyToOne
+	@JoinColumn(name = "studentId")
+	@Valid
+	@NotNull
+	private Student student;
 
-    @ManyToOne
-    @JoinColumn(name = "locationId")
-    private Location location;
+	@ManyToOne
+	@JoinColumn(name = "timeslotId")
+	@Valid
+	@NotNull
+	private Timeslot timeslot;
 
-    private LocalDate date;
+	@ManyToOne
+	@JoinColumn(name = "locationId")
+	@Valid
+	@NotNull
+	private Location location;
+
+	@NotNull
+	private LocalDate date;
 
     public AttendanceRecord() {
     }

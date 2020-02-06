@@ -7,7 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Setter
 @Getter
@@ -16,7 +18,9 @@ import javax.persistence.Id;
 @Entity
 public class Administrator extends AbstractUser {
 
-    private String full_names;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Override
     public String getUsername() {
@@ -32,4 +36,5 @@ public class Administrator extends AbstractUser {
     public int getId() {
         return super.getId();
     }
+
 }

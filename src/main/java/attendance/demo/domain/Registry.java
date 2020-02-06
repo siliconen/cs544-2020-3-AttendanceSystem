@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter
@@ -13,15 +15,21 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 public class Registry {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private double GPA;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private CourseOffering courseOffering;
+	private double GPA;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Student student;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@Valid
+	@NotNull
+	private CourseOffering courseOffering;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@Valid
+	@NotNull
+	private Student student;
 }

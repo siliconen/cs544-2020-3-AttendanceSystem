@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -15,20 +17,23 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class Session {
-    @Id
-    @GeneratedValue
-    private int id;
+	@Id
+	@GeneratedValue
+	private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "courseOfferingId")
-    private CourseOffering courseOffering;
+	@ManyToOne
+	@JoinColumn(name = "courseOfferingId")
+	@Valid
+	@NotNull
+	private CourseOffering courseOffering;
 
-    @ManyToOne
-    @JoinColumn(name = "timeSlotId")
-    private Timeslot timeslot;
+	@ManyToOne
+	@JoinColumn(name = "timeSlotId")
+	@Valid
+	@NotNull
+	private Timeslot timeslot;
 
-    private LocalDate date;
-
-
+	@NotNull
+	private LocalDate date;
 
 }

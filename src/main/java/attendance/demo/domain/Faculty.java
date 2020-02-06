@@ -7,6 +7,9 @@ import lombok.Setter;
 
 
 import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -16,13 +19,15 @@ import java.util.Objects;
 @Entity
 public class Faculty extends AbstractUser{
 
-   /* @Id
-    @GeneratedValue
-    private long id;*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    private String firstName;
+	@NotBlank
+	private String firstName;
 
-    private String lastName;
+	@NotBlank
+	private String lastName;
 
   @Override
   public int getId() {
