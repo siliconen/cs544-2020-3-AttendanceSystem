@@ -7,51 +7,52 @@ import attendance.demo.service.location.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 public class LocationController {
 	@Autowired
 	private LocationService locationService;
 
 
-	@RequestMapping(value="/locations", method=RequestMethod.GET)
+	@GetMapping(value="/locations")
+	//@Secured({"ROLE_ADMIN","ROLE_FACULTY")
 	public List<Location> getAllLocations() {
-		System.out.println("----getAllLocations()------");
 		return locationService.getAllLocations();
 
 	}
 
-	@RequestMapping(value="/locations", method=RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	 public Location addLocation(@RequestBody Location location) {
-		System.out.println("----addLocations()------");
+	@PostMapping(value="/locations")
+	//@Secured({"ROLE_ADMIN"})
+	public Location addLocation(@RequestBody Location location, BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.println("Error! Checkout your entries please ! ");
+		}
 		return locationService.addLocation(location);
 	}
 
-	@RequestMapping(value="/locations/{id}", method=RequestMethod.GET)
-	public Location getLocation(@PathVariable int id, Model model) {
-		System.out.println("----getLocation()------");
+	@GetMapping(value="/locations/{id}")
+	//@Secured({"ROLE_ADMIN","ROLE_FACULTY")
+	public Location getLocation(@PathVariable Integer id) {
 		return locationService.getLocationById(id);
 
 	}
 
-	@RequestMapping(value="/locations/{id}", method=RequestMethod.POST)
-	public Location updateLocation(@PathVariable int id) {
-
-		System.out.println("----updateLocation()------");
-		Location location=locationService.getLocationById(id);
-
+	@PutMapping(value="/locations")
+	//@Secured({"ROLE_ADMIN"})
+	public Location updateLocation(@RequestBody @Valid Location location, BindingResult result ) {
+		if(result.hasErrors()) {
+			System.out.println("Error! Checkout your entries please ! ");
+		}
 		return locationService.updateLocation(location);
 
 	}
 
-	@RequestMapping(value="/deleteLocations/{id}", method=RequestMethod.POST)
-	public boolean deleteLocation(@PathVariable int id) {
-		System.out.println("----deleteLocation()------");
+	@DeleteMapping(value="/locations/{id}")
+	//@Secured({"ROLE_ADMIN"})
+	public boolean deleteLocation(@PathVariable Integer id) {
 		return  locationService.deleteLocationById(id);
 
 	}

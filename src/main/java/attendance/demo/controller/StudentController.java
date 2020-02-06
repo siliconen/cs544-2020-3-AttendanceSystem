@@ -4,9 +4,8 @@ import java.util.List;
 import attendance.demo.domain.Student;
 import attendance.demo.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -30,10 +29,6 @@ public class StudentController {
 	public List<Student> getStudentListByCourse(@PathVariable("courseid") String courseId) {
 		return studentService.getStudentListByCourse(courseId);
 	}
-
-    @Autowired
-    private StudentService studentService;
-
 
     @PreAuthorize("hasAuthority('USER')")
     @GetMapping(value = "/hello")

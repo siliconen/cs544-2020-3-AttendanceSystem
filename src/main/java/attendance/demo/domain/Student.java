@@ -27,10 +27,11 @@ public class Student extends AbstractUser{
 	private int id;
 
 	@NotBlank
-	private String studentId;
+	private String firstName;
 
 	@NotBlank
-	private String firstName;
+	private String studentId;
+
 
 	@NotBlank
 	private String lastName;

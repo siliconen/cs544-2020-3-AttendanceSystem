@@ -2,10 +2,12 @@ package attendance.demo.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 
-
+@Component
 public class Aspect {
 
     @Before("execution(* *..*.add*(..))")
@@ -22,8 +24,8 @@ public class Aspect {
 
 
     }
-    @After("execution(* *..*.*(..))")
-    public void afterLogin(JoinPoint joinPoint){
+    @AfterReturning("execution(* *..*.add*(..))")
+    public void afterAdding(JoinPoint joinPoint){
         Object[] group  = joinPoint.getArgs();
         String name = (String)group[0];
         String className= joinPoint.getClass().getName();

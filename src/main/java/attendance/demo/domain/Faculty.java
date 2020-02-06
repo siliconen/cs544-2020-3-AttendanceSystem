@@ -29,6 +29,8 @@ public class Faculty extends AbstractUser{
 	@NotBlank
 	private String lastName;
 
+
+
   @Override
   public int getId() {
     return super.getId();

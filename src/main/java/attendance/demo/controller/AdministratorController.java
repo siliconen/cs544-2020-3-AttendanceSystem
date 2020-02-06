@@ -34,7 +34,7 @@ public class AdministratorController {
         return administratorService.findById(id);
     }
     @PostMapping("/admin/admin_users")
-    public Administrator saveAdmin(@RequestBody Administrator administrator){
+    public Administrator addAdmin(@RequestBody Administrator administrator){
         return administratorService.save(administrator);
     }
     @PutMapping("/admin/admin_users")

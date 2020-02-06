@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -17,12 +19,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student addStudent(Student student) {
-        String hashedPassword = passwordEncoder.encode(student.getPassword());
-        Student student1 = student;
-        student1.setPassword(hashedPassword);
-        return studentRepository.save(student1);
-
-
+		String hashedPassword = passwordEncoder.encode(student.getPassword());
+		Student student1 = student;
+		student1.setPassword(hashedPassword);
+		return studentRepository.save(student1);
+	}
 
 	@Override
 	public List<Student> getStudentListBySession(int sessionId) {
@@ -36,7 +37,6 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public List<Student> getStudentListByCourse(String courseId) {
-		// TODO Auto-generated method stub
 		return studentRepository.getStudentListByCourse(courseId);
 	}
 }
