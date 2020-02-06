@@ -22,9 +22,6 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class Student extends AbstractUser{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 
 	@NotBlank
 	private String firstName;

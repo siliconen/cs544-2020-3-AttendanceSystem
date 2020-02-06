@@ -19,9 +19,6 @@ import java.util.Objects;
 @Entity
 public class Faculty extends AbstractUser{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
 	@NotBlank
 	private String firstName;
