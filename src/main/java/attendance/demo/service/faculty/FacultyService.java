@@ -1,6 +1,5 @@
 package attendance.demo.service.faculty;
 
-import attendance.demo.domain.Course;
 import attendance.demo.domain.Faculty;
 
 import java.util.List;

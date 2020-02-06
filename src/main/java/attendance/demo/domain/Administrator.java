@@ -16,13 +16,25 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Administrator {
+public class Administrator extends AbstractUser {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank
-    private String username;
-    @NotBlank
-    private String password;
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
+    @Override
+    public int getId() {
+        return super.getId();
+    }
+
 }

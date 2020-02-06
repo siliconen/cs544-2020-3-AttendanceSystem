@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import attendance.demo.domain.Student;
-import attendance.demo.service.student.StudentService;
 
 @RestController
+@RequestMapping(value = "students")
 public class StudentController {
 
 	@Autowired
@@ -26,9 +25,25 @@ public class StudentController {
 	public List<Student> getStudentListByCourseOffering(@PathVariable("courseofferingid") int courseOfferingId) {
 		return studentService.getStudentListByCourseOffering(courseOfferingId);
 	}
-	
+
 	@GetMapping(value = "/faculty/students/course/{courseid}")
 	public List<Student> getStudentListByCourse(@PathVariable("courseid") String courseId) {
 		return studentService.getStudentListByCourse(courseId);
 	}
+
+    @Autowired
+    private StudentService studentService;
+
+
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping(value = "/hello")
+    public String test(){
+        return "hello from attendance";
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping(value = "/add")
+    public Student addStudent(@RequestBody Student student){
+        return studentService.addStudent(student);
+    }
 }

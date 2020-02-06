@@ -1,20 +1,12 @@
 package attendance.demo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 public class AttendanceRecord {
 
@@ -43,4 +35,53 @@ public class AttendanceRecord {
 	@NotNull
 	private LocalDate date;
 
+    public AttendanceRecord() {
+    }
+
+    public AttendanceRecord(Student student, Timeslot timeslot, Location location, LocalDate date) {
+        this.student = student;
+        this.timeslot = timeslot;
+        this.location = location;
+        this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Timeslot getTimeslot() {
+        return timeslot;
+    }
+
+    public void setTimeslot(Timeslot timeslot) {
+        this.timeslot = timeslot;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }
