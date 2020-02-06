@@ -9,4 +9,5 @@ public interface AttendanceService {
     List<AttendanceRecord> getSessionRecords(int sessionId);
 
     List<AttendanceRecord> getStudentRecordsInCourseOffering(String studentId, int courseOfferingId);
+    List<AttendanceRecord> getStudentAttendance(String studentId);
 }

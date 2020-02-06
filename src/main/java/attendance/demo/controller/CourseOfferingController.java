@@ -5,14 +5,14 @@ import attendance.demo.service.courseOffering.CourseOfferingService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import attendance.demo.service.courseOffering.CourseOfferingService;
+
+import java.util.List;
 
 @RestController
 public class CourseOfferingController {
@@ -20,44 +20,50 @@ public class CourseOfferingController {
 	private CourseOfferingService courseOfferingService;
 
 
-	@RequestMapping(value="/courseOfferings", method=RequestMethod.GET)
+	@PreAuthorize("hasAnyAuthority('ADMIN','ROLE_FACULTY')")
+	@GetMapping(value="/courseOfferings",produces = MediaType.APPLICATION_JSON_VALUE)
+
 	public List<CourseOffering> getAllCourseOfferings() {
-		System.out.println("----getAllCourseOfferings()------");
 		return courseOfferingService.getAllCourseOfferings();
 
 	}
 
-	@RequestMapping(value="/courseOfferings", method=RequestMethod.POST)
-	 public CourseOffering addCourseOffering(@RequestBody CourseOffering courseOffering) {
-		System.out.println("----addCourseOffering()------");
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PostMapping(value="/courseOfferings")
+	public CourseOffering addCourseOffering(@RequestBody CourseOffering courseOffering, BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.println("Error! Checkout your entries please ! ");
+		}
 		return courseOfferingService.addCourseOffering(courseOffering);
 	}
 
-	@RequestMapping(value="/courseOfferings/{id}", method=RequestMethod.GET)
-	public CourseOffering getCourseOffering(@PathVariable int id) {
-		System.out.println("----getCourseOffering()------");
+	@PreAuthorize("hasAnyAuthority('ADMIN','ROLE_FACULTY')")
+	@GetMapping(value="/courseOfferings/{id}")
+	public CourseOffering getCourseOffering(@PathVariable Integer id) {
 		return courseOfferingService.getCourseOfferingById(id);
 
 	}
 
-	@RequestMapping(value="/courseOfferings/{id}", method=RequestMethod.POST)
-	public CourseOffering updateCourseOffering(@PathVariable int id) {
-
-		System.out.println("----updateCourseOffering()------");
-		CourseOffering courseOffering=courseOfferingService.getCourseOfferingById(id);
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PutMapping(value="/courseOfferings")
+	public CourseOffering updateCourseOffering(@RequestBody CourseOffering courseOffering, BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.println("Error! Checkout your entries please ! ");
+		}
 
 		return courseOfferingService.updateCourseOffering(courseOffering);
 
 	}
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@DeleteMapping(value="/courseOfferings/{id}")
+	public boolean deleteCourseOffering(@PathVariable Integer id) {
 
-	@RequestMapping(value="/deleteCourseOfferings/{id}", method=RequestMethod.POST)
-	public boolean deleteCourseOffering(@PathVariable int id) {
-		System.out.println("----deleteCourseOffering()------");
-		return  courseOfferingService.deleteCourseOfferingById(id);
-
+		return courseOfferingService.deleteCourseOfferingById(id);
 	}
+
+	@PreAuthorize("hasAuthority('ROLE_FACULTY')")
 	@GetMapping(value = "/faculty/attendancepercent/courseoffering/{courseofferingid}")
 	public double calculateCourseOfferingPecent(@PathVariable("courseofferingid") int courseOfferingId) {
-		return courseOfferingService.countAttendacePercentInCourseOffering(courseOfferingId);
+		return courseOfferingService.countAttendancePercentInCourseOffering(courseOfferingId);
 	}
 }

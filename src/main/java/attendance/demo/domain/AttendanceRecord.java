@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -42,5 +43,6 @@ public class AttendanceRecord {
 
 	@NotNull
 	private LocalDate date;
+
 
 }

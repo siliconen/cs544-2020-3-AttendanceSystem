@@ -4,31 +4,38 @@ import java.util.List;
 import attendance.demo.domain.Student;
 import attendance.demo.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
-import attendance.demo.domain.Student;
-import attendance.demo.service.student.StudentService;
 
 @RestController
+@RequestMapping(value = "students")
 public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
 
+	@PreAuthorize("hasAuthority('ROLE_FACULTY')")
 	@GetMapping(value = "/faculty/students/session/{sessionid}")
 	public List<Student> getStudentListBySession(@PathVariable("sessionid") int sessionId) {
 		return studentService.getStudentListBySession(sessionId);
 	}
-
+	@PreAuthorize("hasAuthority('ROLE_FACULTY')")
 	@GetMapping(value = "/faculty/students/courseoffering/{courseofferingid}")
 	public List<Student> getStudentListByCourseOffering(@PathVariable("courseofferingid") int courseOfferingId) {
 		return studentService.getStudentListByCourseOffering(courseOfferingId);
 	}
-	
+	@PreAuthorize("hasAuthority('ROLE_FACULTY')")
 	@GetMapping(value = "/faculty/students/course/{courseid}")
 	public List<Student> getStudentListByCourse(@PathVariable("courseid") String courseId) {
 		return studentService.getStudentListByCourse(courseId);
 	}
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping(value = "admin/students")
+    public Student addStudent(@RequestBody Student student){
+        return studentService.addStudent(student);
+    }
+
+
 }

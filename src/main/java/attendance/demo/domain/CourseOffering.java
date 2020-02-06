@@ -21,7 +21,7 @@ public class CourseOffering {
 	@GeneratedValue
 	private int courseOfferingId;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "courseId")
 	@Valid
 	@NotNull
@@ -32,7 +32,7 @@ public class CourseOffering {
 	@NotNull
 	private LocalDate endDate;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "locationId")
 	@Valid
 	@NotNull

@@ -22,24 +22,26 @@ public interface AttendanceRepository extends JpaRepository<AttendanceRecord, In
 			+ "and s.date = a.date "
 			+ "and s.id=:sessionId")
 	List<AttendanceRecord> getSessionRecords(@Param("sessionId") int sessionId);
-	
+
 	@Query("select a from AttendanceRecord a, Session s, CourseOffering c "
 			+ "where s.date = a.date "
 			+ "and s.timeslot.id = a.timeslot.id "
 			+ "and c.courseOfferingId = s.courseOffering.courseOfferingId "
 			+ "and c.location.id = a.location.id "
-			+ "and a.student.studentId=:studentId "			
+			+ "and a.student.studentId=:studentId "
 			+ "and s.courseOffering.courseOfferingId=:courseOfferingId "
 			+ "order by a.date, s.timeslot.id")
 	List<AttendanceRecord> getStudentRecordsInCourseOffering(@Param("studentId") String studentId, @Param("courseOfferingId") int courseOfferingId);
-	
+
 	@Query("select count(*) from AttendanceRecord a, Session s, CourseOffering c "
 			+ "where s.date = a.date "
 			+ "and s.timeslot.id = a.timeslot.id "
 			+ "and c.courseOfferingId = s.courseOffering.courseOfferingId "
-			+ "and c.location.id = a.location.id "			
+			+ "and c.location.id = a.location.id "
 			+ "and s.courseOffering.courseOfferingId=:courseOfferingId "
 			+ "and s.date between c.startDate and c.endDate")
 	int countRecordsInCourseOffering(@Param("courseOfferingId") int courseOfferingId);
-	
+
+	@Query("select a from AttendanceRecord a where a.student.studentId=:studentId")
+	List<AttendanceRecord> getStudentAttendance(@Param("studentId") String studentId);
 }

@@ -22,4 +22,6 @@ public interface CourseOfferingService {
 	
 	public double countAttendacePercentInCourseOffering(int courseOfferingId) ;
 
+	public double countAttendancePercentInCourseOffering(int courseOfferingId);
+
 }

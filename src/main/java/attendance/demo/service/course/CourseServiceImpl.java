@@ -2,15 +2,13 @@ package attendance.demo.service.course;
 
 import java.util.List;
 import java.util.Optional;
-
 import attendance.demo.repository.CourseRepository;
 import attendance.demo.domain.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import attendance.demo.domain.Course;
-import attendance.demo.repository.CourseRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
