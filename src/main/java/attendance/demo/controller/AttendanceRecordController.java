@@ -7,6 +7,7 @@ import attendance.demo.service.course.CourseService;
 import attendance.demo.service.attendance.AttendanceService;
 import attendance.demo.service.courseOffering.CourseOfferingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,24 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AttendanceRecordController {
 
     @Autowired
-    private CourseService courseService;
-    @Autowired
-    private CourseOfferingService courseOfferingService;
-
-    @Autowired
     private AttendanceService attendanceService;
 
-    @GetMapping(value = "faculty/course")
-    public List<Course> getCourses() {
-        return courseService.findAll();
-    }
-
-    @GetMapping(value = "faculty/courseoffering")
-    public List<CourseOffering> getCourseOffering() {
-        //return courseOfferingService.getCourseOffering();
-        return null;
-    }
-
+    @PreAuthorize("hasAuthority('ROLE_FACULTY')")
     @GetMapping(value = "/faculty/attendance/student/{studentid}/courseoffering/{offeringid}")
     public List<AttendanceRecord> getStudentRecordsInCourseOffering(@PathVariable("studentid") String studentId,
                                                                     @PathVariable("offeringid") int courseOfferingId) {
@@ -41,9 +27,16 @@ public class AttendanceRecordController {
         return result;
     }
 
+    @PreAuthorize("hasAuthority('ROLE_FACULTY')")
     @GetMapping(value = "/faculty/attendance/session/{sessionid}")
     public List<AttendanceRecord> getSessionRecords(@PathVariable("sessionid") int sessionId) {
         List<AttendanceRecord> result = attendanceService.getSessionRecords(sessionId);
         return result;
+    }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping(value="students")
+    public List<AttendanceRecord> getStudentAttendance(@PathVariable String studentId){
+        return attendanceService.getStudentAttendance(studentId);
     }
 }

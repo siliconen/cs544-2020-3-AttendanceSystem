@@ -42,4 +42,6 @@ public interface AttendanceRepository extends JpaRepository<AttendanceRecord, In
 			+ "and s.date between c.startDate and c.endDate")
 	int countRecordsInCourseOffering(@Param("courseOfferingId") int courseOfferingId);
 
+	@Query("select a from AttendanceRecord a where a.student.studentId=:studentId")
+	List<AttendanceRecord> getStudentAttendance(@Param("studentId") String studentId);
 }

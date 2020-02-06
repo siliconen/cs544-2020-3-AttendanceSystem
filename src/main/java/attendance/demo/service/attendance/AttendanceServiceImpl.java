@@ -23,4 +23,9 @@ public class AttendanceServiceImpl implements AttendanceService{
     public List<AttendanceRecord> getStudentRecordsInCourseOffering(String studentId, int courseOfferingId) {
         return attendanceRepository.getStudentRecordsInCourseOffering(studentId, courseOfferingId);
     }
+
+    @Override
+    public List<AttendanceRecord> getStudentAttendance(String studentId) {
+        return attendanceRepository.getStudentAttendance(studentId);
+    }
 }

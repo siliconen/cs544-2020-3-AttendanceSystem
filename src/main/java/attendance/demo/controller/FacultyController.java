@@ -10,37 +10,34 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/faculties")
 public class FacultyController{
 
     @Autowired
     private FacultyService facultyService;
 
-    @PreAuthorize("hasAuthority('ROLE_FACULTY')")
-    @GetMapping("/test")
-    public String test(){
-        return "hello from faculty";
-    }
-
-    @GetMapping("admin/faculty_users")
-    public List<Faculty> getAllCourses() {
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("admin/faculties")
+    public List<Faculty> getAllFaculty() {
         return facultyService.findAll();
     }
-
-    @GetMapping("/admin/faculty_users/{id}")
-    public Optional getCourse(@PathVariable Integer id){
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/admin/faculties/{id}")
+    public Optional getFaculty(@PathVariable Integer id){
         return facultyService.findById(id);
     }
-    @PostMapping("/admin/faculty_users")
-    public Faculty saveCourse(@RequestBody Faculty faculty){
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/admin/faculties")
+    public Faculty addFaculty(@RequestBody Faculty faculty){
         return facultyService.save(faculty);
     }
-    @PutMapping("/admin/faculty_users")
-    public Faculty updateCourse(@RequestBody Faculty faculty){
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/admin/faculties")
+    public Faculty updateFaculty(@RequestBody Faculty faculty){
         return facultyService.save(faculty);
     }
-    @DeleteMapping(value ="/admin/faculty_users/{id}")
-    public void deleteCourse(@PathVariable Integer id){
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping(value ="/admin/faculties/{id}")
+    public void deleteFaculty(@PathVariable Integer id){
         facultyService.delete(id);
     }
 

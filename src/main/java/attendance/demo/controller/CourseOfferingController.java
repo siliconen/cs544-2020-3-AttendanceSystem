@@ -3,6 +3,7 @@ import attendance.demo.domain.CourseOffering;
 import attendance.demo.service.courseOffering.CourseOfferingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +17,16 @@ public class CourseOfferingController {
 	private CourseOfferingService courseOfferingService;
 
 
-
+	@PreAuthorize("hasAnyAuthority('ADMIN','ROLE_FACULTY')")
 	@GetMapping(value="/courseOfferings",produces = MediaType.APPLICATION_JSON_VALUE)
-	//@Secured({"ROLE_ADMIN","ROLE_FACULTY"})
+
 	public List<CourseOffering> getAllCourseOfferings() {
 		return courseOfferingService.getAllCourseOfferings();
 
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping(value="/courseOfferings")
-	//@Secured({"ROLE_ADMIN"})
 	public CourseOffering addCourseOffering(@RequestBody CourseOffering courseOffering, BindingResult result) {
 		if(result.hasErrors()) {
 			System.out.println("Error! Checkout your entries please ! ");
@@ -33,15 +34,15 @@ public class CourseOfferingController {
 		return courseOfferingService.addCourseOffering(courseOffering);
 	}
 
+	@PreAuthorize("hasAnyAuthority('ADMIN','ROLE_FACULTY')")
 	@GetMapping(value="/courseOfferings/{id}")
-	//@Secured({"ROLE_ADMIN","ROLE_FACULTY")
 	public CourseOffering getCourseOffering(@PathVariable Integer id) {
 		return courseOfferingService.getCourseOfferingById(id);
 
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value="/courseOfferings")
-	//@Secured({"ROLE_ADMIN"})
 	public CourseOffering updateCourseOffering(@RequestBody CourseOffering courseOffering, BindingResult result) {
 		if(result.hasErrors()) {
 			System.out.println("Error! Checkout your entries please ! ");
@@ -50,13 +51,14 @@ public class CourseOfferingController {
 		return courseOfferingService.updateCourseOffering(courseOffering);
 
 	}
-
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping(value="/courseOfferings/{id}")
-	//@Secured({"ROLE_ADMIN"})
 	public boolean deleteCourseOffering(@PathVariable Integer id) {
 
 		return courseOfferingService.deleteCourseOfferingById(id);
 	}
+
+	@PreAuthorize("hasAuthority('ROLE_FACULTY')")
 	@GetMapping(value = "/faculty/attendancepercent/courseoffering/{courseofferingid}")
 	public double calculateCourseOfferingPecent(@PathVariable("courseofferingid") int courseOfferingId) {
 		return courseOfferingService.countAttendancePercentInCourseOffering(courseOfferingId);
