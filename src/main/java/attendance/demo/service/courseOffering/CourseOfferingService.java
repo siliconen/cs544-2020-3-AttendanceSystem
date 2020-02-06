@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface CourseOfferingService {
 
-
 	public CourseOffering updateCourseOffering(CourseOffering courseOffering);
 
 	public boolean deleteCourseOfferingById(int id);
@@ -17,10 +16,7 @@ public interface CourseOfferingService {
 
 	public List<CourseOffering> getAllCourseOfferings();
 
-
 	public CourseOffering addCourseOffering(CourseOffering courseOffering);
-	
-	public double countAttendacePercentInCourseOffering(int courseOfferingId) ;
 
 	public double countAttendancePercentInCourseOffering(int courseOfferingId);
 

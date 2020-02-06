@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-=======
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
->>>>>>> c31e3a9f3658204b7e76956a85a5816d55d843ff
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -13,7 +8,7 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>attendence</groupId>
+	<groupId>attendance</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
@@ -41,18 +36,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
-<<<<<<< HEAD
 		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-jdbc</artifactId> 
 			</dependency> -->
-=======
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
->>>>>>> c31e3a9f3658204b7e76956a85a5816d55d843ff
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -63,7 +55,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-<<<<<<< HEAD
 		<!-- <dependency> -->
 		<!-- <groupId>org.springframework.boot</groupId> -->
 		<!-- <artifactId>spring-boot-starter-oauth2-client</artifactId> -->
@@ -72,9 +63,6 @@
 		<!-- <groupId>org.springframework.boot</groupId> -->
 		<!-- <artifactId>spring-boot-starter-security</artifactId> -->
 		<!-- </dependency> -->
-=======
-
->>>>>>> c31e3a9f3658204b7e76956a85a5816d55d843ff
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -128,21 +116,16 @@
 			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
 		<!-- <dependency> -->
 		<!-- <groupId>org.springframework.security</groupId> -->
 		<!-- <artifactId>spring-security-test</artifactId> -->
 		<!-- <scope>test</scope> -->
 		<!-- </dependency> -->
-=======
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
->>>>>>> c31e3a9f3658204b7e76956a85a5816d55d843ff
 	</dependencies>
 
 

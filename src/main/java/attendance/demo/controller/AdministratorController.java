@@ -14,62 +14,37 @@ import java.util.Optional;
 @RestController
 public class AdministratorController {
 
-<<<<<<< HEAD
 	@Autowired
 	private AdministratorService administratorService;
 
-	@GetMapping("admin/admin_users")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("admin/admins")
 	public List<Administrator> getAllAdmins() {
 		return administratorService.findAll();
 	}
 
-	@GetMapping("/admin/admin_users/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("/admin/admins/{id}")
 	public Optional getAdmin(@PathVariable Integer id) {
 		return administratorService.findById(id);
 	}
 
-	@PostMapping("/admin/admin_users")
-	public Administrator saveAdmin(@RequestBody Administrator administrator) {
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PostMapping("/admin/admins")
+	public Administrator addAdmin(@RequestBody Administrator administrator) {
 		return administratorService.save(administrator);
 	}
 
-	@PutMapping("/admin/admin_users")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PutMapping("/admin/admins")
 	public Administrator updateAdmin(@RequestBody Administrator administrator) {
 		return administratorService.save(administrator);
 	}
 
-	@DeleteMapping(value = "/admin/admin_users/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@DeleteMapping(value = "/admin/admins/{id}")
 	public void deleteAdmin(@PathVariable Integer id) {
 		administratorService.delete(id);
 	}
-=======
-    @Autowired
-    private AdministratorService administratorService;
 
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("admin/admins")
-    public List<Administrator> getAllAdmins() {
-        return administratorService.findAll();
-    }
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/admin/admins/{id}")
-    public Optional getAdmin(@PathVariable Integer id){
-        return administratorService.findById(id);
-    }
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping("/admin/admins")
-    public Administrator addAdmin(@RequestBody Administrator administrator){
-        return administratorService.save(administrator);
-    }
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @PutMapping("/admin/admins")
-    public Administrator updateAdmin(@RequestBody Administrator administrator){
-        return administratorService.save(administrator);
-    }
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @DeleteMapping(value ="/admin/admins/{id}")
-    public void deleteAdmin(@PathVariable Integer id){
-        administratorService.delete(id);
-    }
->>>>>>> c31e3a9f3658204b7e76956a85a5816d55d843ff
 }
