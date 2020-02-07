@@ -13,6 +13,7 @@ public abstract class AbstractUser {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
 
+    @Column(unique=true)
     protected String username;
 
     protected String password;

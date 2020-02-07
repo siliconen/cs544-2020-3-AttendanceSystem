@@ -39,9 +39,9 @@ public class Student extends AbstractUser{
 
 	@NotBlank
 	private String password;
-	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JsonManagedReference
-	private List<AttendanceRecord> attendanceRecords;
+//	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//	@JsonManagedReference
+//	private List<AttendanceRecord> attendanceRecords;
 
 	@Override
 	public String getPassword() {

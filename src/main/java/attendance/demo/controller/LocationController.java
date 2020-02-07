@@ -50,7 +50,6 @@ public class LocationController {
 
 	}
 
-	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping(value="/locations/{id}")
 	public boolean deleteLocation(@PathVariable Integer id) {
 		return  locationService.deleteLocationById(id);

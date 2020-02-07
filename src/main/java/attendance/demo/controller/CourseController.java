@@ -18,23 +18,29 @@ public class CourseController {
     @PreAuthorize("hasAnyAuthority('ADMIN','ROLE_FACULTY')")
     @GetMapping("admin/courses")
     public List<Course> getAllCourses() {
+
         return courseService.findAll();
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/admin/courses/{id}")
     public Optional getCourse(@PathVariable Integer id){
+
         return courseService.findById(id);
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/admin/courses")
     public Course saveCourse(@RequestBody Course course){
         return courseService.save(course);
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/admin/courses")
     public Course updateCourse(@RequestBody Course course){
         return courseService.save(course);
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping(value ="/admin/courses/{id}")
     public void deleteCourse(@PathVariable Integer id){

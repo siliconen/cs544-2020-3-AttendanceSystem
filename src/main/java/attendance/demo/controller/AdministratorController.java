@@ -27,7 +27,7 @@ public class AdministratorController {
     public Optional getAdmin(@PathVariable Integer id){
         return administratorService.findById(id);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+   @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/admin/admins")
     public Administrator addAdmin(@RequestBody Administrator administrator){
         return administratorService.save(administrator);
